@@ -1,0 +1,680 @@
+body {
+  font-family: "TimesNewArial";
+  src: url("../fonts/TimesNewArialVF.woff") format("woff"),
+  url("../fonts/TimesNewArialVF.woff2") format("woff2");
+  font-variation-settings: "srff" 100, "ital" 0, "wght" 10;
+  font-size: 1vw;
+  background-color: #fdfcf3;
+  color: #080808;
+}
+
+::-moz-selection { /* firefox */
+color: rgba(0, 0, 0, 0.04);
+background: rgba(255, 255, 255, 0.96);
+}
+
+::selection {
+  color: rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.selected {
+  color: rgba(255, 255, 255, 0.96);
+  background: rgba(249, 247, 221, 0.5);
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #080808; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #080808; 
+}
+
+@media screen and (max-width: 770px) {
+  main {
+    display: none !important;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .mobile p {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 770px) {
+  .mobile {
+    display: none !important;
+  }
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+
+  transition: font-variation-settings 0.3s ease;
+}
+
+a:hover {
+  font-variation-settings: "srff" 0, "ital" 0, "wght" 100;
+}
+
+p, h1, h2, h3 {
+  font-size: 1.8vw;
+  line-height: 1.2;
+}
+
+i {
+  font-variation-settings: "srff" 100, "ital" 100, "wght" 10;
+}
+
+s {
+  text-decoration-thickness: 2px;
+}
+
+li {
+  line-height: 1.25;
+}
+
+sup, 
+sub,
+.a--footnote {
+  vertical-align: super;
+  font-size: 1vw;
+  line-height: 0;
+}
+
+sup, 
+sub {
+  margin-left: 2%;
+}
+
+sup::after {
+  content: "\2192";
+}
+
+sub::after {
+  content: "\2192";
+  color: rgba(255, 255, 255, 0.9);
+  background-color: white;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+
+  /* 
+  notes for working with the js-function anchor-links: 
+  scroll-behavior smooth has to be disabled, when the link-jumping should work 
+  if js-smooth-scroll-between-the-pages should work, it has to be set
+  */
+  /* scroll-behavior: smooth; */
+}
+
+nav {
+  position: fixed;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+  width: 100vw;
+  padding: 5px;
+  padding-right: 15px;
+  font-size: 2vw;
+
+  z-index: 50;
+  pointer-events: none;
+}
+
+nav * {
+  pointer-events: auto;
+}
+
+nav > div {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+#nav__II {
+  right: 15px;
+  text-align: right;
+}
+
+#nav__III {
+  bottom: 5px;
+  flex-direction: column-reverse;
+}
+
+#nav__IV {
+  right: 15px;
+  bottom: 5px;
+  text-align: right;
+  flex-direction: column-reverse;
+}
+
+#nav__about,
+#nav__home {
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#nav__about a:hover {
+  color: black;
+}
+
+#nav__home {
+  position: absolute;
+  color: white;
+  z-index: 99;
+}
+
+.nav__title {
+  color: rgba(192, 192, 192, 0.85);
+  cursor: crosshair;
+}
+
+.nav__list {
+  display: none;
+}
+
+/* adjacent sibling combinator (+) to target the .nav__list that comes immediately after .nav__title when .nav__title is hovered */
+.nav__list:hover,
+.nav__title:hover + .nav__list {
+  display: block;
+}
+
+.intro, 
+.outro {
+  display: flex;
+
+  position: relative;
+  color: white;
+  background-color: rgba(5, 5, 5, 0.95);
+  width: 100%;
+  height: 100vh;
+  padding: 5px;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-margin-top: 100vh;
+
+  font-variation-settings: "srff" 0, "ital" 0, "wght" 0;
+
+  z-index: 90;
+}
+
+.intro {
+    flex-direction: column;
+    align-items: start; 
+}
+
+.intro__title {
+  flex-direction: row;
+  position: sticky;
+  top: 5px;
+}
+
+.intro__title--page {
+  font-variation-settings: "srff" 0, "ital" 0, "wght" 40;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: white;
+
+  text-shadow: 1px 1px 40px #dfdfdf;
+}
+
+#typewriter,
+#typewriter-cursor {
+  display: inline;
+  font-variation-settings: "srff" 100, "ital" 0, "wght" 0;
+  letter-spacing: 1px;
+}
+
+#typewriter-cursor {
+  font-size: 1.8vw;
+  font-variation-settings: "srff" 0, "ital" 0, "wght" 0;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49%, 100% {
+    opacity: 1;
+  }
+  50%, 99% {
+    opacity: 0;
+  }
+}
+
+.outro {
+  justify-content: center;
+  align-items: center; 
+}
+
+.outro a {
+  color: white;
+  z-index: 100;
+}
+
+.grid-layout {
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+  letter-spacing: 1px;
+}
+
+.grid-layout p {
+  font-variation-settings: "srff" 100, "ital" 0, "wght" 0;
+}
+
+#colophon {
+  grid-column: span 3;
+}
+
+
+.h1--inv {
+  letter-spacing: 0.02em;
+  color: white;
+}
+
+.h1--inv::-moz-selection { 
+  color: #222222;
+  background: black;
+}
+
+.h1--inv::selection { 
+  color: #222222;
+  background: black;
+}
+
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-margin-top: 100vh; 
+  /* quentins trick to make sure scroll-snap is functioning well and won't mess up with the sticky overlapping elements -> adresses not the actual element that is already sticky/ overlapping and already out of the document flow, but the next element, that is still on its origin position */
+}
+
+.page:has(.page__palimpsest) {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.page::-webkit-scrollbar {
+  display: none;
+}
+
+.page--no-scroll-snap {
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+}
+
+.page--sticky {
+  position: sticky;
+  position: -webkit-sticky;  /* for safari */
+	top: 0;
+}
+
+.page--absolute {
+  position: absolute;
+}
+
+.page--hidden {
+  visibility: hidden;
+}
+
+.page--block {
+  display: block;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.page--overlay {
+  background-color: rgba(253, 252, 243, 0.8);
+}
+
+.page--text-indent {
+  text-indent: 60%;
+}
+
+.page__title {
+  position: absolute;
+  top: 5px;
+}
+
+.page__chapter {
+  font-variation-settings: "srff" 100, "ital" 0, "wght" 100;
+}
+
+.page__link {
+  position: absolute;
+  color: #080808;
+}
+
+.page__link--forth {
+  transform: translate(0, 70px);
+}
+
+.page__link--forth::after {
+  content: "[\2026]\2192";
+}
+
+.page__link--back {
+  transform: translate(-50px, -70px);
+}
+
+.page__link--back::after {
+  content: "\2190[\2026]";
+}
+
+.page__link--highlight {
+  color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.96);
+  visibility: visible;
+}
+
+.page__palimpsest {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  scroll-snap-align: center;
+  scroll-snap-stop: normal;
+
+  mix-blend-mode: screen; 
+}
+
+.page__palimpsest--absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.page__palimpsest--sticky {
+  position: sticky;
+  position: -webkit-sticky;  /* for safari */
+	top: 0;
+}
+
+.page__I {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.page__I--highlight {
+  color: rgba(85, 85, 85, 0);
+}
+
+.page__I--highlight .span--vfs, 
+.page__palimpsest--highlight .span--vfs {
+  color: rgba(85, 85, 85, 0);
+}
+
+.page__I--highlight span:not(.span--vfs), 
+.page__palimpsest--highlight span {
+  color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0.96);
+  mix-blend-mode: hard-light;
+}
+
+.span--ghost .selected::selection {
+  color: black;
+}
+
+.span--vfs {
+  color: rgba(5, 5, 5, 0.96);
+  line-height: 0.25;
+  font-size: 200%;
+  display: inline-block;
+  white-space: nowrap;
+  height: 1.8vw; /* height of p-elements + sth */
+  /* text-align: center; */
+  animation: vfsAnimation 5s ease-in-out infinite;
+}
+
+@keyframes vfsAnimation {
+  0% {
+    font-variation-settings: "srff" 0, "ital" 0, "wght" 0;
+  }
+  50% {
+    font-variation-settings: "srff" 100, "ital" 0, "wght" 0;
+  }
+  100% {
+    font-variation-settings: "srff" 0, "ital" 0, "wght" 0;
+  }
+}
+
+.span--vfs i {
+  line-height: 0;
+  display: inline-block;
+  white-space: nowrap;
+  /* text-align: center; */
+  animation: vfsAnimationItal 5s ease-in-out infinite;
+}
+
+@keyframes vfsAnimationItal {
+  0% {
+    font-variation-settings: "srff" 0, "ital" 50, "wght" 0;
+  }
+  50% {
+    font-variation-settings: "srff" 100, "ital" 100, "wght" 0;
+  }
+  100% {
+    font-variation-settings: "srff" 0, "ital" 50, "wght" 0;
+  }
+}
+
+.page__II {
+  margin-left: 10%;
+  margin-right: 10%;
+
+  font-size: 1.1vw;
+  line-height: 1.3;
+
+  font-variation-settings: "srff" 0, "ital" 0, "wght" 50;
+}
+
+.page__II--highlight {
+  color: rgba(85, 85, 85, 0); 
+}
+
+.page__II--highlight span {
+  color: rgba(85, 85, 85, 0);
+  background-color: rgba(192, 192, 192, 0.85);
+}
+
+.page__II::selection {
+  background-color: rgba(192, 192, 192, 0.5);
+}
+
+.span--tab {
+  width: 200px;
+  display: inline-block;
+}
+
+.page__III {
+  margin-left: 30%;
+  margin-right: 30%;
+
+  font-size: 1.5em;
+  line-height: 1.2;
+
+  font-variation-settings: "srff" 30, "ital" 0, "wght" 70;
+}
+ 
+.page__III--highlight span {
+  color: rgba(85, 85, 85, 0); 
+}
+
+.page__III::selection {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.page__IV {
+  font-size: 1.5em;
+  line-height: 1.2;
+
+  font-variation-settings: "srff" 30, "ital" 0, "wght" 70;
+}
+
+.page__IV--highlight span {
+  color: rgba(85, 85, 85, 0); 
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.page__IV--highlight-lemma {
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
+
+  background-color: rgba(249, 247, 221, 0.5);
+  width: 90%;
+  height: 70%;
+}
+
+.page__IV--highlight-lemma > a {
+  position: relative;
+  transform: none;
+}
+
+.page__IV--highlight-lemma > .page__link--forth {
+  align-self: flex-end;
+}
+
+details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+summary {
+  cursor: pointer;
+  color: inherit;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: font-variation-settings 0.3s ease;
+}
+
+summary:hover {
+  font-variation-settings: "srff" 0, "ital" 0, "wght" 100;
+}
+
+img {
+  width: 100%;
+  height: 70vh;
+}
+
+#img-marcel-broodthaers {
+  height: 300px;
+  border: 7px solid #080808;
+}
+
+figcaption {
+  margin-top: 10px;
+  font-size: 120%;
+  width: 90vw;
+  line-height: 1.25;
+}
+
+.poem-01 {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  color: white;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.poem-01 > span {
+  background-color: rgba(5, 5, 5, 0.95);
+  padding: 1%;
+  letter-spacing: 0.5px;
+}
+
+.poem-02 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#poem-02__verse-01 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#poem-02__verse-02 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#poem-02__verse-03 {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+#poem-02__verse-04 {
+  grid-column: 4;
+  grid-row: 4;
+}
+
+.footnote, .footnote--highlight {
+  display: block;
+  position: absolute;
+  width: 30%;
+  top: 10%;
+  right: 5%;
+
+  font-size: 0.8vw;
+  line-height: 1.75;
+
+  z-index: -1;
+}
+
+.footnote--highlight {
+  color: rgba(253, 252, 243, 0);
+  background-color: rgba(253, 252, 243, 0.85);
+}
+
+.summary--stayopen {
+  top: 5px;
+  left: 50%;
+  transform: translate(-50%);
+  color: rgba(0, 0, 0, 0.0);
+  z-index: 99;
+}

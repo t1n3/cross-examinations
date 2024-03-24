@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "TimesNewArial";
+  src: url("../fonts/TimesNewArialVF.woff") format("woff"),
+  url("../fonts/TimesNewArialVF.woff2") format("woff2");
+  /* font-weight requires a range: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide#Using_a_variable_font_font-face_changes */
+
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
